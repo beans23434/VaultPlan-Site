@@ -1,5 +1,43 @@
-<!DOCTYPE html>
-<html>
-  <head><title>VaultPlan</title></head>
-  <body><h1>VaultPlan is Live</h1></body>
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VaultPlan</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      background-color: #0e0e0e;
+      color: #00ff99;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #00ff99;
+      color: #000;
+      border: none;
+      border-radius: 0.25rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00dd88;
+    }
+  </style>
+</head>
+<body>
+  <h1>VaultPlan: Minimal Site</h1>
+  <button onclick="showMessage()">Reflect</button>
+  <p id="output"></p>  <script>
+    function showMessage() {
+      document.getElementById("output").textContent = "🧠 Reflecting... ETH up 12%. Mental state: stabilized.";
+    }
+  </script></body>
 </html>
