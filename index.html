@@ -1,43 +1,166 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VaultPlan</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: monospace;
-      background-color: #0e0e0e;
-      color: #00ff99;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-    }
-    h1 {
-      font-size: 2rem;
-    }
-    button {
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #00ff99;
-      color: #000;
-      border: none;
-      border-radius: 0.25rem;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #00dd88;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>VaultPlan</title>
+<style>
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    background: #f7f9fc;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  header {
+    background: #2c3e50;
+    padding: 1.5rem 1rem;
+    text-align: center;
+  }
+  header img {
+    max-width: 150px;
+    height: auto;
+  }
+  main {
+    flex: 1;
+    max-width: 900px;
+    margin: 2rem auto;
+    width: 90%;
+  }
+  /* Carousel section */
+  #carousel-section {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+    padding: 1rem 1.5rem;
+    margin-bottom: 3rem;
+  }
+  #carousel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+  }
+  #carousel-header h2 {
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.4rem;
+  }
+  #toggle-btn {
+    font-size: 1.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #3498db;
+    font-weight: bold;
+    user-select: none;
+  }
+  #carousel-content {
+    margin-top: 1rem;
+    display: none;
+  }
+  .carousel-item {
+    display: inline-block;
+    width: 160px;
+    height: 100px;
+    margin-right: 12px;
+    border-radius: 6px;
+    background: #ecf0f1;
+    color: #7f8c8d;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 100px;
+    text-align: center;
+    user-select: none;
+  }
+  /* About section */
+  #about {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  #about h2 {
+    margin-top: 0;
+    font-weight: 700;
+    font-size: 1.6rem;
+  }
+  footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #999;
+    padding: 1rem 0 2rem;
+  }
+</style>
 </head>
 <body>
-  <h1>VaultPlan: Minimal Site</h1>
-  <button onclick="showMessage()">Reflect</button>
-  <p id="output"></p>  <script>
-    function showMessage() {
-      document.getElementById("output").textContent = "🧠 Reflecting... ETH up 12%. Mental state: stabilized.";
+
+<header>
+  <!-- Replace with your VaultPlan logo URL or image file -->
+  <img src="https://via.placeholder.com/150x50?text=VaultPlan+Logo" alt="VaultPlan Logo" />
+</header>
+
+<main>
+  <section id="carousel-section" aria-label="Preview Carousel">
+    <div id="carousel-header" tabindex="0" role="button" aria-expanded="false" aria-controls="carousel-content">
+      <h2>Preview Carousel</h2>
+      <button id="toggle-btn" aria-label="Expand preview carousel">+</button>
+    </div>
+    <div id="carousel-content">
+      <div class="carousel-item">Slide 1</div>
+      <div class="carousel-item">Slide 2</div>
+      <div class="carousel-item">Slide 3</div>
+      <div class="carousel-item">Slide 4</div>
+      <div class="carousel-item">Slide 5</div>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About VaultPlan</h2>
+    <p>
+      VaultPlan is a simple, powerful tool designed to help you take control of your finances with clarity and confidence.
+      Track your income, expenses, savings goals, and visualize your progress — all in one place.
+    </p>
+    <p>
+      Whether you're budgeting monthly bills or planning long-term investments, VaultPlan brings structure to your financial life,
+      empowering you to make informed decisions and build a secure future.
+    </p>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 VaultPlan. All rights reserved.
+</footer>
+
+<script>
+  const toggleBtn = document.getElementById('toggle-btn');
+  const carouselContent = document.getElementById('carousel-content');
+  const carouselHeader = document.getElementById('carousel-header');
+
+  function toggleCarousel() {
+    const isExpanded = carouselHeader.getAttribute('aria-expanded') === 'true';
+    carouselHeader.setAttribute('aria-expanded', !isExpanded);
+    toggleBtn.textContent = isExpanded ? '+' : '−';
+    toggleBtn.setAttribute('aria-label', isExpanded ? 'Expand preview carousel' : 'Collapse preview carousel');
+    carouselContent.style.display = isExpanded ? 'none' : 'block';
+  }
+
+  toggleBtn.addEventListener('click', toggleCarousel);
+  carouselHeader.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleCarousel();
     }
-  </script></body>
+  });
+</script>
+
+</body>
 </html>
